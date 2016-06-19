@@ -2,8 +2,15 @@ var socket = io();
 var name = getQueryVariable('name') || 'Anonymous';
 var room = getQueryVariable('room');
 
+// Update h1 tag
+jQuery('.room-title').text(room);
+
 socket.on('connect',function(){
     console.log('Connected to server!');
+    socket.emit('joinRoom', {
+        name: name,
+        room: room
+    });
 });
 
 socket.on('message', function(message){
@@ -13,7 +20,7 @@ socket.on('message', function(message){
     console.log(message.text);
     
     $messages.append('<p><strong>'+ message.name + ' ' + momentTimestamp.local().format('h:mm a') + ':</strong> ' + message.text +'</p>');
-    $messages.append('<p><strong>'+ momentTimestamp.local().format('h:mm a') + ':</strong> ' + '<em>'+ name + ' just joined ' + room +'</em>.</p>');
+   
 });
 
 // Handles submitting of new message
