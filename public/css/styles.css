@@ -1,3 +1,5 @@
+@media only screen and (min-width: 960px) {
+
 .vertical-center {
 	min-height: 100vh;
 	margin: 0;
@@ -9,6 +11,36 @@ h1 {
 	margin: 24px 0;
 }
 
+.list-group-item {
+	width: 540px;  
+	overflow: auto;
+}
+
 .messages p {
 	margin: 1px 0;
+}
+
+}
+
+@media only screen and (max-width:400px) {
+	.vertical-center {
+	min-height: 50vh;
+	margin: 0;
+	display: flex;
+	align-items: center;
+}
+
+h1 {
+	font-size: 10px;
+	margin: 24px 0;
+}
+
+.list-group-item {
+	width: 60%;  
+	overflow: auto;
+}
+
+.messages p {
+	margin: 1px 0;
+}
 }
